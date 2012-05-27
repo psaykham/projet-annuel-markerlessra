@@ -13,11 +13,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "buffer.h"
+#import "edgel.h"
+#import "NSEdgel.h"
+#import "LineSegment.h"
 
 @interface OpenCVClientViewController : UIViewController
 {
     cv::VideoCapture *_videoCapture;
     cv::Mat _lastFrame;
+    Buffer * buffer;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
@@ -29,5 +34,6 @@
 
 - (IBAction)capture:(id)sender;
 - (IBAction)sliderChanged:(id)sender;
+- (Vector2f)determineEdgelOrientiationWithX:(int)x andY:(int)y;
 
 @end

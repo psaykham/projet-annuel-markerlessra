@@ -24,6 +24,12 @@
 		005C845A141697EF00B1ADDB /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005C8459141697EF00B1ADDB /* CoreVideo.framework */; };
 		005C845C1416980700B1ADDB /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005C845B1416980700B1ADDB /* CoreMedia.framework */; };
 		005C85B71416B09D00B1ADDB /* OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005C85B61416B09D00B1ADDB /* OpenCV.framework */; };
+		8F25340B154C2FF500AA0B91 /* edgel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F253409154C2FF500AA0B91 /* edgel.mm */; };
+		8F25340E154C305C00AA0B91 /* LineSegment.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F25340D154C305C00AA0B91 /* LineSegment.mm */; };
+		8F3C7FF0153B536800C8AA13 /* buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C7FEE153B536800C8AA13 /* buffer.mm */; };
+		8F3C7FF3153B5F8400C8AA13 /* testimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F3C7FF2153B5F8400C8AA13 /* testimage2.jpg */; };
+		8F3C7FF5153B5FEA00C8AA13 /* testimage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3C7FF4153B5FEA00C8AA13 /* testimage3.png */; };
+		8F4F353D154D968300DA8BCA /* NSEdgel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F4F353C154D968300DA8BCA /* NSEdgel.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +57,17 @@
 		005C845B1416980700B1ADDB /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		005C85B61416B09D00B1ADDB /* OpenCV.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenCV.framework; sourceTree = "<group>"; };
 		00FDD98E1435E549008F8ECE /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		8F253407154C2FB800AA0B91 /* vector2f.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector2f.h; sourceTree = "<group>"; };
+		8F253409154C2FF500AA0B91 /* edgel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = edgel.mm; sourceTree = "<group>"; };
+		8F25340A154C2FF500AA0B91 /* edgel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edgel.h; sourceTree = "<group>"; };
+		8F25340C154C305C00AA0B91 /* LineSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineSegment.h; sourceTree = "<group>"; };
+		8F25340D154C305C00AA0B91 /* LineSegment.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LineSegment.mm; sourceTree = "<group>"; };
+		8F3C7FEE153B536800C8AA13 /* buffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = buffer.mm; sourceTree = "<group>"; };
+		8F3C7FEF153B536800C8AA13 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
+		8F3C7FF2153B5F8400C8AA13 /* testimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testimage2.jpg; path = OpenCVClient/testimage2.jpg; sourceTree = "<group>"; };
+		8F3C7FF4153B5FEA00C8AA13 /* testimage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testimage3.png; sourceTree = "<group>"; };
+		8F4F353B154D968300DA8BCA /* NSEdgel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSEdgel.h; sourceTree = "<group>"; };
+		8F4F353C154D968300DA8BCA /* NSEdgel.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = NSEdgel.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +128,13 @@
 		0013FA2A14111D0F004DC957 /* OpenCVClient */ = {
 			isa = PBXGroup;
 			children = (
+				8F4F353B154D968300DA8BCA /* NSEdgel.h */,
+				8F4F353C154D968300DA8BCA /* NSEdgel.mm */,
+				8F253409154C2FF500AA0B91 /* edgel.mm */,
+				8F25340A154C2FF500AA0B91 /* edgel.h */,
+				8F253407154C2FB800AA0B91 /* vector2f.h */,
+				8F3C7FEE153B536800C8AA13 /* buffer.mm */,
+				8F3C7FEF153B536800C8AA13 /* buffer.h */,
 				0013FA3314111D0F004DC957 /* OpenCVClientAppDelegate.h */,
 				0013FA3414111D0F004DC957 /* OpenCVClientAppDelegate.mm */,
 				0013FA3614111D0F004DC957 /* MainWindow.xib */,
@@ -120,6 +144,8 @@
 				0013FA2B14111D0F004DC957 /* Supporting Files */,
 				0013FA4614111D6A004DC957 /* UIImage+OpenCV.h */,
 				0013FA4714111D6A004DC957 /* UIImage+OpenCV.mm */,
+				8F25340C154C305C00AA0B91 /* LineSegment.h */,
+				8F25340D154C305C00AA0B91 /* LineSegment.mm */,
 			);
 			path = OpenCVClient;
 			sourceTree = "<group>";
@@ -138,6 +164,8 @@
 		0013FA4D14112999004DC957 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				8F3C7FF4153B5FEA00C8AA13 /* testimage3.png */,
+				8F3C7FF2153B5F8400C8AA13 /* testimage2.jpg */,
 				000DE6D51416BA0F006B478D /* testimage.jpg */,
 			);
 			name = Images;
@@ -197,6 +225,8 @@
 				0013FA3814111D0F004DC957 /* MainWindow.xib in Resources */,
 				0013FA3E14111D0F004DC957 /* OpenCVClientViewController.xib in Resources */,
 				000DE6D61416BA0F006B478D /* testimage.jpg in Resources */,
+				8F3C7FF3153B5F8400C8AA13 /* testimage2.jpg in Resources */,
+				8F3C7FF5153B5FEA00C8AA13 /* testimage3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +241,10 @@
 				0013FA3514111D0F004DC957 /* OpenCVClientAppDelegate.mm in Sources */,
 				0013FA3B14111D0F004DC957 /* OpenCVClientViewController.mm in Sources */,
 				0013FA4814111D6A004DC957 /* UIImage+OpenCV.mm in Sources */,
+				8F3C7FF0153B536800C8AA13 /* buffer.mm in Sources */,
+				8F25340B154C2FF500AA0B91 /* edgel.mm in Sources */,
+				8F25340E154C305C00AA0B91 /* LineSegment.mm in Sources */,
+				8F4F353D154D968300DA8BCA /* NSEdgel.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +282,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: arnaud phommasone (7GBH8RJ4CW)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -262,6 +296,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
