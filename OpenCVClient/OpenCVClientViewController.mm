@@ -369,9 +369,9 @@ const int kCannyAperture = 7;
             
             NSMutableArray * lineSegmentsList = [[NSMutableArray alloc] init];
                         
-            if([edgelsList count] >= 5) {
-                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
-            }
+//            if([edgelsList count] >= 5) {
+//                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
+//            }
                         
 //            for (LineSegment * lineSegment in lineSegmentsList) {
 //                cv::line(_lastFrame, cvPoint(lineSegment.start.position.x, lineSegment.start.position.y), cvPoint(lineSegment.end.position.x, lineSegment.end.position.y), CV_RGB(0,100,0));
