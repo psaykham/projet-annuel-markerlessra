@@ -20,6 +20,7 @@
 #include <iostream>
 
 #define THRESHOLD (16*16)
+#define EDGELSONLINE 5
 
 using namespace std;
 
@@ -273,77 +274,54 @@ const int kCannyAperture = 7;
 }
 
 - (NSMutableArray *) findLineSegmentInEdgelsList:(NSMutableArray *)edgels
-{
-    NSMutableArray * lineSegmentsList = [[NSMutableArray alloc] init];
-    LineSegment * currentLineSegment = [[LineSegment alloc] init];
+{   
+    NSMutableArray * lineSegments = [[NSMutableArray alloc] init];
+    LineSegment * lineSegmentInRun = [[LineSegment alloc] init];
     
-    //on va enregistrer les edgels qui sont dans le segment en cours tant qu'il y en a
+    srand(time(NULL));
+    
     do {
-        [currentLineSegment.supportEdgels removeAllObjects];
+        [lineSegmentInRun.supportEdgels removeAllObjects];
         
         for (int i=0; i<25; i++) {
-            NSEdgel * edgel1;
-            NSEdgel * edgel2;
+            NSEdgel * r1;
+            NSEdgel * r2;
             
+            const int max_iterations = 100;
             int iteration = 0, ir1, ir2;
             
-            
-            //On choisit 2 points de la même région de façon aléatoire et dont l'orientation est compatible avec la ligne actuelle
-            //On utilise donc une boucle pour vérifier que nos edgels aléatoires correspondent bien à ces conditions
             do {
                 ir1 = (rand()%([edgels count]));
-                ir2 = (rand()%([edgels count]));
+				ir2 = (rand()%([edgels count]));
                 
-                edgel1 = [edgels objectAtIndex:ir1];
-                edgel2 = [edgels objectAtIndex:ir2];
+                r1 = [edgels objectAtIndex:ir1];
+                r2 = [edgels objectAtIndex:ir2];
                 
                 iteration++;
-            } while ((ir1 == ir2 || ![edgel1 isOrientationCompatibleWithEdgel:edgel2]) && iteration < 25);
+            } while ((ir1 == ir2 || ![r1 isOrientationCompatibleWithEdgel:r2]) && iteration < max_iterations);
             
-            if(iteration < 25) {
-                //on a trouvé 2 edgels compatibles
+            if (iteration < max_iterations) {
                 LineSegment * lineSegment = [[LineSegment alloc] init];
-                //on initialise la ligne avec les points qu'on a trouvé
-                lineSegment.start = edgel1;
-                lineSegment.end = edgel2;
-//                lineSegment.slope = edgel1.slope;
-                [lineSegment setSlope:[edgel1 getSlope]];
+                lineSegment.start = r1;
+                lineSegment.end = r2;
+                [lineSegment setSlope:[r1 getSlope]];
                 
-                for (NSEdgel * edgel in edgels) {
-                    if ([lineSegment atLine:edgel]) {
+                for(NSEdgel * edgel in edgels) {
+                    if([lineSegment atLine:edgel]) {
                         [lineSegment addSupportedEdgel:edgel];
                     }
                 }
-                
-                NSLog(@"linesegment : %i et currentlinesegment : %i", [lineSegment.supportEdgels count], [currentLineSegment.supportEdgels count]);
-                if([lineSegment.supportEdgels count] > [currentLineSegment.supportEdgels count]) {
-                    currentLineSegment = lineSegment;
+
+                if ([lineSegment.supportEdgels count] > [lineSegmentInRun.supportEdgels count]) {
+                    lineSegmentInRun = lineSegment;
+                    NSLog(@"bonjour");
                 }
-//                [lineSegment release];
             }
         }
         
-        
-        
-//        if([currentLineSegment.supportEdgels count] >= 5) {
-////            float u1 = 0;
-////            float u2 = 50000;
-////            const Vector2f slope = (currentLineSegment.start.position - currentLineSegment.end.position);
-////            
-////            const Vector2f orientation = Vector2f(-currentLineSegment.start.slope.y, currentLineSegment.start.slope.x);
-////            
-////            if(abs(slope.x) <= abs(slope.y)) {
-////                
-////            } else {
-////                
-////            }
-//            
-//            [lineSegmentsList addObject:temp];
-//        }
-        
-    } while ([currentLineSegment.supportEdgels count] >= 5 && [edgels count] >= 5);
+    } while ([lineSegmentInRun.supportEdgels count] >= EDGELSONLINE && [edgels count] >= EDGELSONLINE);
     
-    return lineSegmentsList;
+    return lineSegments;
 }
 
 // Perform image processing on the last captured frame and display the results
@@ -367,15 +345,11 @@ const int kCannyAperture = 7;
             //on recherche des points de contours dans chaque zone
             NSMutableArray * edgelsList = [self findEdgePointsWithLeftBorder:j andTopBorder:i andWidth:width andHeight:height];
             
-            NSMutableArray * lineSegmentsList = [[NSMutableArray alloc] init];
+            NSMutableArray * lineSegmentsList;
                         
-//            if([edgelsList count] >= 5) {
-//                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
-//            }
-                        
-//            for (LineSegment * lineSegment in lineSegmentsList) {
-//                cv::line(_lastFrame, cvPoint(lineSegment.start.position.x, lineSegment.start.position.y), cvPoint(lineSegment.end.position.x, lineSegment.end.position.y), CV_RGB(0,100,0));
-//            }
+            if([edgelsList count] >= 5) {
+                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
+            }
         }
     }
         
