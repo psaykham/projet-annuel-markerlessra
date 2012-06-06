@@ -71,7 +71,7 @@ const int kCannyAperture = 7;
     {
         cv::Mat tempMat = [testImage CVMat];
     }
-        
+    
     t = 1000 * ((double)cv::getTickCount() - t) / cv::getTickFrequency() / times;
     
     [pool release];
@@ -98,9 +98,9 @@ const int kCannyAperture = 7;
     //--------------------------------
     // Convert from cv::Mat to UIImage
     cv::Mat testMat = [testImage CVMat];
-
+    
     t = (double)cv::getTickCount();
-        
+    
     for (int i = 0; i < times; i++)
     {
         UIImage *tempImage = [[UIImage alloc] initWithCVMat:testMat];
@@ -125,7 +125,7 @@ const int kCannyAperture = 7;
     self.lowLabel = nil;
     self.highSlider = nil;
     self.lowSlider = nil;
-
+    
     delete _videoCapture;
     _videoCapture = nil;
 }
@@ -179,13 +179,13 @@ const int kCannyAperture = 7;
     cv::line(_lastFrame, cvPoint(j, i), cvPoint(j, i + std::min( 40, _lastFrame.rows-i-3)), color);
     cv::line(_lastFrame, cvPoint(j, i + std::min( 40, _lastFrame.rows-i-3)), cvPoint(j+std::min( 40, _lastFrame.cols-j-3), i + std::min( 40, _lastFrame.rows-i-3)), color);
     cv::line(_lastFrame, cvPoint(j+std::min( 40, _lastFrame.cols-j-3), i + std::min( 40, _lastFrame.rows-i-3)), cvPoint(j+std::min( 40, _lastFrame.cols-j-3), i + std::min( 40, _lastFrame.rows-i-3)), color);
-
+    
 }
 
 //Permet de trouver les points d'intérêt des contours
 - (NSMutableArray *) findEdgePointsWithLeftBorder:(int)j andTopBorder:(int)i andWidth:(const int)width andHeight:(int)height
 {
-//    vector<Edgel> edgelsList;
+    //    vector<Edgel> edgelsList;
     NSMutableArray * edgelsList = [[NSMutableArray alloc] init];
     CvScalar colorRed = CV_RGB(0,0,255);
     float prev1, prev2;
@@ -250,7 +250,7 @@ const int kCannyAperture = 7;
             offset += pitch;
         }
     }
-
+    
     return edgelsList;
 }
 
@@ -311,7 +311,7 @@ const int kCannyAperture = 7;
                         [lineSegment addSupportedEdgel:edgel];
                     }
                 }
-
+                
                 if ([lineSegment.supportEdgels count] > [lineSegmentInRun.supportEdgels count]) {
                     lineSegmentInRun = lineSegment;
                     NSLog(@"bonjour");
@@ -320,6 +320,7 @@ const int kCannyAperture = 7;
         }
         
     } while ([lineSegmentInRun.supportEdgels count] >= EDGELSONLINE && [edgels count] >= EDGELSONLINE);
+    
     
     return lineSegments;
 }
@@ -333,26 +334,54 @@ const int kCannyAperture = 7;
     IplImage* temp = new IplImage(_lastFrame);
     buffer = new Buffer();
     buffer->setBuffer( (unsigned char *) temp->imageData, temp->width, temp->height);
-        
-    //on procède par zone de 40*40pixels
-    for(int i = 2; i <buffer->getHeight() - 3; i+=40)
-    {
-        for(int j = 2; j < buffer->getWidth() - 3; j+=40)
-        {
-            int height = std::min(40, buffer->getHeight()-i-3);
-            int width = std::min(40, buffer->getWidth()-j-3);
-            
-            //on recherche des points de contours dans chaque zone
-            NSMutableArray * edgelsList = [self findEdgePointsWithLeftBorder:j andTopBorder:i andWidth:width andHeight:height];
-            
-            NSMutableArray * lineSegmentsList;
-                        
-            if([edgelsList count] >= 5) {
-                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
-            }
-        }
+    CvScalar colorRed = CV_RGB(0,0,255);
+    
+    // Initialize parameters
+    //	self.downSampleFactorParam	= 4;
+    //	self.thresholdParam			= 20.0;
+    //	self.nonMaxSuppressionParam	= NO;
+    //	self.showCameraParam		= YES;
+    //	self.displayMethod			= 0;
+    
+    float frameWidth = temp->width / 1;
+	float frameHeight = temp->height / 1;
+    
+    xy* bufferCorners;
+    
+    corners = fast9_detect(buffer->getBuffer(), temp->width / 1, temp->height / 1, temp->width / 1, 20, &numCorners);
+    
+	for (int i = 0; i < numCorners; i++) {
+		// Corner coordinates    
+        bufferCorners[2*i + 1].x = corners[i].x / frameWidth * 2 - 1;
+        bufferCorners[2*i].x = corners[i].y / frameWidth * 2 - 1;
+	}
+    
+    for(int i=0; i<numCorners; i++) {
+        cv::circle(_lastFrame, cvPoint(bufferCorners[i].x, bufferCorners[i].y), 1, colorRed);
     }
-        
+    
+//            cv::circle(_lastFrame, cvPoint(corners[i].x * 2 + 1, corners[i].y), 1, colorRed);
+    
+    
+    //on procède par zone de 40*40pixels
+    //    for(int i = 2; i <buffer->getHeight() - 3; i+=40)
+    //    {
+    //        for(int j = 2; j < buffer->getWidth() - 3; j+=40)
+    //        {
+    //            int height = std::min(40, buffer->getHeight()-i-3);
+    //            int width = std::min(40, buffer->getWidth()-j-3);
+    //            
+    //            //on recherche des points de contours dans chaque zone
+    //            NSMutableArray * edgelsList = [self findEdgePointsWithLeftBorder:j andTopBorder:i andWidth:width andHeight:height];
+    //            
+    //            NSMutableArray * lineSegmentsList;
+    //                        
+    //            if([edgelsList count] >= 5) {
+    //                lineSegmentsList = [self findLineSegmentInEdgelsList:edgelsList];
+    //            }
+    //        }
+    //    }
+    
     // Display result 
     self.imageView.image = [UIImage imageWithCVMat:_lastFrame];
     self.elapsedTimeLabel.text = [NSString stringWithFormat:@"%.1fms", t];
