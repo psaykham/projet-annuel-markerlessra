@@ -17,12 +17,15 @@
 #import "edgel.h"
 #import "NSEdgel.h"
 #import "LineSegment.h"
+#import "fast.h"
 
 @interface OpenCVClientViewController : UIViewController
 {
     cv::VideoCapture *_videoCapture;
     cv::Mat _lastFrame;
     Buffer * buffer;
+    int numCorners;
+	xy *corners;
 }
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
@@ -31,6 +34,8 @@
 @property (nonatomic, retain) IBOutlet UISlider *lowSlider;
 @property (nonatomic, retain) IBOutlet UILabel *highLabel;
 @property (nonatomic, retain) IBOutlet UILabel *lowLabel;
+@property (nonatomic) int numCorners;
+@property (nonatomic) xy *corners;
 
 - (IBAction)capture:(id)sender;
 - (IBAction)sliderChanged:(id)sender;

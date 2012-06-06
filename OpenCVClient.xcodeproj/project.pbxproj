@@ -26,6 +26,14 @@
 		005C85B71416B09D00B1ADDB /* OpenCV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005C85B61416B09D00B1ADDB /* OpenCV.framework */; };
 		8F25340B154C2FF500AA0B91 /* edgel.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F253409154C2FF500AA0B91 /* edgel.mm */; };
 		8F25340E154C305C00AA0B91 /* LineSegment.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F25340D154C305C00AA0B91 /* LineSegment.mm */; };
+		8F33BC641572786B00DFE40A /* README in Resources */ = {isa = PBXBuildFile; fileRef = 8F33BC5B1572786B00DFE40A /* README */; };
+		8F33BC651572786B00DFE40A /* nonmax.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC5C1572786B00DFE40A /* nonmax.cc */; };
+		8F33BC661572786B00DFE40A /* LICENSE - FAST Corner in Resources */ = {isa = PBXBuildFile; fileRef = 8F33BC5D1572786B00DFE40A /* LICENSE - FAST Corner */; };
+		8F33BC671572786B00DFE40A /* fast.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC5F1572786B00DFE40A /* fast.cc */; };
+		8F33BC681572786B00DFE40A /* fast_12.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC601572786B00DFE40A /* fast_12.cc */; };
+		8F33BC691572786B00DFE40A /* fast_11.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC611572786B00DFE40A /* fast_11.cc */; };
+		8F33BC6A1572786B00DFE40A /* fast_10.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC621572786B00DFE40A /* fast_10.cc */; };
+		8F33BC6B1572786B00DFE40A /* fast_9.cc in Sources */ = {isa = PBXBuildFile; fileRef = 8F33BC631572786B00DFE40A /* fast_9.cc */; };
 		8F3C7FF0153B536800C8AA13 /* buffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8F3C7FEE153B536800C8AA13 /* buffer.mm */; };
 		8F3C7FF3153B5F8400C8AA13 /* testimage2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8F3C7FF2153B5F8400C8AA13 /* testimage2.jpg */; };
 		8F3C7FF5153B5FEA00C8AA13 /* testimage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F3C7FF4153B5FEA00C8AA13 /* testimage3.png */; };
@@ -62,6 +70,15 @@
 		8F25340A154C2FF500AA0B91 /* edgel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = edgel.h; sourceTree = "<group>"; };
 		8F25340C154C305C00AA0B91 /* LineSegment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineSegment.h; sourceTree = "<group>"; };
 		8F25340D154C305C00AA0B91 /* LineSegment.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LineSegment.mm; sourceTree = "<group>"; };
+		8F33BC5B1572786B00DFE40A /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		8F33BC5C1572786B00DFE40A /* nonmax.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = nonmax.cc; sourceTree = "<group>"; };
+		8F33BC5D1572786B00DFE40A /* LICENSE - FAST Corner */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "LICENSE - FAST Corner"; sourceTree = "<group>"; };
+		8F33BC5E1572786B00DFE40A /* fast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fast.h; sourceTree = "<group>"; };
+		8F33BC5F1572786B00DFE40A /* fast.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fast.cc; sourceTree = "<group>"; };
+		8F33BC601572786B00DFE40A /* fast_12.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fast_12.cc; sourceTree = "<group>"; };
+		8F33BC611572786B00DFE40A /* fast_11.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fast_11.cc; sourceTree = "<group>"; };
+		8F33BC621572786B00DFE40A /* fast_10.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fast_10.cc; sourceTree = "<group>"; };
+		8F33BC631572786B00DFE40A /* fast_9.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fast_9.cc; sourceTree = "<group>"; };
 		8F3C7FEE153B536800C8AA13 /* buffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = buffer.mm; sourceTree = "<group>"; };
 		8F3C7FEF153B536800C8AA13 /* buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffer.h; sourceTree = "<group>"; };
 		8F3C7FF2153B5F8400C8AA13 /* testimage2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testimage2.jpg; path = OpenCVClient/testimage2.jpg; sourceTree = "<group>"; };
@@ -93,6 +110,7 @@
 		0013FA1514111D0E004DC957 = {
 			isa = PBXGroup;
 			children = (
+				8F33BC5A1572784A00DFE40A /* FASTLib */,
 				00FDD98E1435E549008F8ECE /* README.markdown */,
 				0013FA4D14112999004DC957 /* Images */,
 				0013FA2A14111D0F004DC957 /* OpenCVClient */,
@@ -171,6 +189,22 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		8F33BC5A1572784A00DFE40A /* FASTLib */ = {
+			isa = PBXGroup;
+			children = (
+				8F33BC5B1572786B00DFE40A /* README */,
+				8F33BC5C1572786B00DFE40A /* nonmax.cc */,
+				8F33BC5D1572786B00DFE40A /* LICENSE - FAST Corner */,
+				8F33BC5E1572786B00DFE40A /* fast.h */,
+				8F33BC5F1572786B00DFE40A /* fast.cc */,
+				8F33BC601572786B00DFE40A /* fast_12.cc */,
+				8F33BC611572786B00DFE40A /* fast_11.cc */,
+				8F33BC621572786B00DFE40A /* fast_10.cc */,
+				8F33BC631572786B00DFE40A /* fast_9.cc */,
+			);
+			name = FASTLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -227,6 +261,8 @@
 				000DE6D61416BA0F006B478D /* testimage.jpg in Resources */,
 				8F3C7FF3153B5F8400C8AA13 /* testimage2.jpg in Resources */,
 				8F3C7FF5153B5FEA00C8AA13 /* testimage3.png in Resources */,
+				8F33BC641572786B00DFE40A /* README in Resources */,
+				8F33BC661572786B00DFE40A /* LICENSE - FAST Corner in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +281,12 @@
 				8F25340B154C2FF500AA0B91 /* edgel.mm in Sources */,
 				8F25340E154C305C00AA0B91 /* LineSegment.mm in Sources */,
 				8F4F353D154D968300DA8BCA /* NSEdgel.mm in Sources */,
+				8F33BC651572786B00DFE40A /* nonmax.cc in Sources */,
+				8F33BC671572786B00DFE40A /* fast.cc in Sources */,
+				8F33BC681572786B00DFE40A /* fast_12.cc in Sources */,
+				8F33BC691572786B00DFE40A /* fast_11.cc in Sources */,
+				8F33BC6A1572786B00DFE40A /* fast_10.cc in Sources */,
+				8F33BC6B1572786B00DFE40A /* fast_9.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
